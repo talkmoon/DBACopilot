@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: dbacopilot
+
+# 业务库（只读账号，W3 用）
+app:
+  datasource:
+    jdbc-url: jdbc:mysql://localhost:3306/demo?useSSL=false&serverTimezone=Asia/Shanghai
+    username: readonly
+    password: ${DB_READONLY_PASSWORD:}
+  llm:
+    base-url: ${LLM_BASE_URL:https://api.deepseek.com/v1}
+    api-key: ${LLM_API_KEY:}
+    model: ${LLM_MODEL:deepseek-chat}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
